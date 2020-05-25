@@ -1,4 +1,3 @@
- the __init__.py file of app package, enter the following:
 
 # app/__init__.py
 
