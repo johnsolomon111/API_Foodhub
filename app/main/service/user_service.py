@@ -20,7 +20,7 @@ def save_new_user(data):
             'status': 'success',
             'message': 'Successfully registered.'
         }
-        return response_object, 201
+        return generate_token(new_user)
     else:
         response_object = {
             'status': 'fail',
