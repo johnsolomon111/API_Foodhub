@@ -4,11 +4,11 @@ import jwt
 from app.main.model.blacklist import BlacklistToken
 from ..config import key
 
-class User(db.Model):
+class Customer(db.Model):
     """ User Model for storing user related details """
-    __tablename__ = "user"
+    __tablename__ = "customer"
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    customer_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(255), unique=True, nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
     phone_number = db.Column(db.String(15))
@@ -26,9 +26,9 @@ class User(db.Model):
         return flask_bcrypt.check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return "<User '{}'>".format(self.username)
+        return "<Customer '{}'>".format(self.username)
 
-    def encode_auth_token(self, user_id):
+    def encode_auth_token(self, customer_id):
             """
             Generates the Auth Token
             :return: string
@@ -37,7 +37,7 @@ class User(db.Model):
                 payload = {
                     'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1, seconds=5),
                     'iat': datetime.datetime.utcnow(),
-                    'sub': user_id
+                    'sub': customer_id
                 }
                 return jwt.encode(
                     payload,

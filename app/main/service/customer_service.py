@@ -2,24 +2,24 @@ import uuid
 import datetime
 
 from app.main import db
-from app.main.model.user import User
+from app.main.model.customer import Customer
 
 
-def save_new_user(data):
-    user = User.query.filter_by(email=data['email']).first()
-    if not user:
-        new_user = User(
+def save_new_customer(data):
+    customer = Customer.query.filter_by(email=data['email']).first()
+    if not customer:
+        new_customer = Customer(
             email=data['email'],
             phone_number=data['phone_number'],
             password=data['password'],
             registered_on=datetime.datetime.utcnow()
         )
-        save_changes(new_user)
+        save_changes(new_customer)
         response_object = {
             'status': 'success',
             'message': 'Successfully registered.'
         }
-        return generate_token(new_user)
+        return generate_token(new_customer)
     else:
         response_object = {
             'status': 'fail',
@@ -28,22 +28,22 @@ def save_new_user(data):
         return response_object, 409
 
 
-def get_all_users():
-    return User.query.all()
+def get_all_customer():
+    return Customer.query.all()
 
 
-def get_a_user(id):
-    return User.query.filter_by(id=id).first()
+def get_a_customer(customer_id):
+    return Customer.query.filter_by(customer_id=customer_id).first()
 
 
 def save_changes(data):
     db.session.add(data)
     db.session.commit()
 
-def generate_token(user):
+def generate_token(customer):
     try:
         # generate the auth token
-        auth_token = user.encode_auth_token(user.id)
+        auth_token = customer.encode_auth_token(customer.customer_id)
         response_object = {
             'status': 'success',
             'message': 'Successfully registered.',

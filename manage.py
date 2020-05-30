@@ -2,6 +2,7 @@ import os
 import unittest
 
 from app.main.model import user
+from app.main.model import customer
 from app import blueprint
 from app.main.model import blacklist
 
