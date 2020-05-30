@@ -13,6 +13,7 @@ class Customer(db.Model):
     registered_on = db.Column(db.DateTime, nullable=False)
     phone_number = db.Column(db.String(15))
     password_hash = db.Column(db.String(100))
+    customer_name = db.Column(db.String(150))
 
     @property
     def password(self):

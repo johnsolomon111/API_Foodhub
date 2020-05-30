@@ -12,6 +12,7 @@ def save_new_customer(data):
             email=data['email'],
             phone_number=data['phone_number'],
             password=data['password'],
+            customer_name=data['customer_name'],
             registered_on=datetime.datetime.utcnow()
         )
         save_changes(new_customer)

@@ -6,7 +6,8 @@ class UserDto:
     user = api.model('user', {
         'email': fields.String(required=True, description='user email address'),
         'password': fields.String(required=True, description='user password'),
-        'phone_number': fields.String(description='user Identifier')
+        'phone_number': fields.String(description='user Identifier'),
+        'name': fields.String(description='user full name')
     })
 
 class AuthDto:
@@ -17,9 +18,10 @@ class AuthDto:
     })
 
 class CustomerDto:
-    api = Namespace('user', description='user related operations')
-    customer = api.model('user', {
+    api = Namespace('customer', description='user related operations')
+    customer = api.model('customer', {
         'email': fields.String(required=True, description='user email address'),
         'password': fields.String(required=True, description='user password'),
-        'phone_number': fields.String(description='user Identifier')
+        'phone_number': fields.String(description='user Identifier'),
+        'customer_name': fields.String(description='customer full name')
     })
