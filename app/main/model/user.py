@@ -2,6 +2,7 @@ from .. import db, flask_bcrypt
 import datetime
 import jwt
 from app.main.model.blacklist import BlacklistToken
+from app.main.model.restaurant import *
 from ..config import key
 
 class User(db.Model):
@@ -14,6 +15,7 @@ class User(db.Model):
     phone_number = db.Column(db.String(15))
     password_hash = db.Column(db.String(100))
     name = db.Column(db.String(150))
+    restaurants = db.relationship('Restaurant',backref='owner')
 
     @property
     def password(self):
