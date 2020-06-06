@@ -1,10 +1,12 @@
 from .. import db
+from app.main.model.menu import *
+
 
 class Restaurant(db.Model):
 	__tablename__ = "restaurant"
 
 	resto_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	resto_name = db.Column(db.String(300), nullable=False)
+	resto_name = db.Column(db.String(300), nullable=False, unique=True)
 	location = db.Column(db.String(500), nullable=False)
 	resto_description = db.Column(db.String(500))
 	sun = db.Column(db.String(20))
@@ -31,4 +33,6 @@ class Restaurant(db.Model):
 		self.thu = thu
 		self.fri = fri
 		self.sat = sat
+
+
 

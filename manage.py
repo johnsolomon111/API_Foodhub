@@ -24,7 +24,8 @@ manager.add_command('db', MigrateCommand)
 
 @manager.command
 def run():
-    app.run()
+	port = int(os.environ.get("PORT",8080))
+	app.run(port=port)
 
 @manager.command
 def test():
