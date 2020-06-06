@@ -7,7 +7,7 @@ from ..service.customer_service import save_new_customer, get_all_customer, get_
 api = CustomerDto.api
 _user = CustomerDto.customer
 
-
+ 
 @api.route('/')
 class CustomerList(Resource):
     @api.doc('list_of_registered_customer')

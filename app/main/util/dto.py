@@ -18,10 +18,26 @@ class AuthDto:
     })
 
 class CustomerDto:
-    api = Namespace('customer', description='user related operations')
+    api = Namespace('customer', description='customer related operations')
     customer = api.model('customer', {
         'email': fields.String(required=True, description='user email address'),
         'password': fields.String(required=True, description='user password'),
         'phone_number': fields.String(description='user Identifier'),
         'customer_name': fields.String(description='customer full name')
     })
+
+class RestaurantDto:
+    api = Namespace('restaurant', description='restaurant realated operations')
+    restaurant = api.model('restaurant', {
+        'resto_name': fields.String(required=True, description='business name'),
+        'location': fields.String(required=True,description='business location'),
+        'resto_description': fields.String(required=True, description='paragraph for business'),
+        'services': fields.String(description='what business has to offer'),
+        'sun': fields.String(description='operation hours'),
+        'mon': fields.String(description='operation hours'),
+        'tue': fields.String(description='operation hours'),
+        'wed': fields.String(description='operation hours'),
+        'thu': fields.String(description='operation hours'),
+        'fri': fields.String(description='operation hours'),
+        'sat': fields.String(description='operation hours')
+        })
