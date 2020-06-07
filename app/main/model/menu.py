@@ -13,8 +13,9 @@ class Menu(db.Model):
 	def __repr__(self):
 		return "<Menu '{}'>".format(self.menu_name)
 
-	def __init__(self,menu_name='',menu_description='', price='',available=''):
+	def __init__(self,menu_name='',resto_id='',menu_description='', price='',available=''):
 		self.menu_name = menu_name
 		self.menu_description = menu_description
 		self.price = price
 		self.available = available
+		self.resto_id = resto_id
